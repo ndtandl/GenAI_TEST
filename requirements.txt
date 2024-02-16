@@ -1,0 +1,23 @@
+# transformers==4.36.2
+# torch
+# gradio
+# sentencepiece
+argparse
+
+bitsandbytes==0.39.0
+#accelerate==0.21.0
+#deepspeed==0.10.0
+#auto-gptq
+scipy
+sentencepiece
+datasets
+evaluate
+pytest
+transformers
+scikit-learn
+torch --index-url https://download.pytorch.org/whl/cu118
+torchvision --index-url https://download.pytorch.org/whl/cu118
+torchaudio --index-url https://download.pytorch.org/whl/cu118
+tensorboard
+gradio
+peft

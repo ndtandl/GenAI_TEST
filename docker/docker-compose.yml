@@ -1,0 +1,16 @@
+version: '3.7'
+services:
+  app:
+    image: FlagAlpha/llama2-7b:gradio 
+    volumes:
+      - /usr/local/nvidia:/usr/local/nvidia 
+    environment:
+      - NVIDIA_VISIBLE_DEVICES=all
+    ports:
+      - 7860:7860
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              capabilities: [gpu]
