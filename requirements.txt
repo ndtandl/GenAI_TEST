@@ -21,3 +21,7 @@ torchaudio --index-url https://download.pytorch.org/whl/cu118
 tensorboard
 gradio
 peft
+trl
+
+wheel
+flash-attn --no-build-isolation
