@@ -2,7 +2,7 @@
 import torch
 from peft import AutoPeftModelForCausalLM
 
-output_dir = './codeLlama-7b-Instruct-text-to-sql'
+output_dir = './models/codeLlama-7b-text-to-sql'
 
 # Load PEFT model on CPU
 model = AutoPeftModelForCausalLM.from_pretrained(

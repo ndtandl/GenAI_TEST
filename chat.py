@@ -1,5 +1,6 @@
 import gradio as gr
 import time
+from peft import AutoPeftModelForCausalLM
 from transformers import AutoTokenizer, AutoModelForCausalLM,TextIteratorStreamer
 from threading import Thread
 import torch,sys,os
@@ -103,7 +104,12 @@ if __name__ == "__main__":
     tokenizer = AutoTokenizer.from_pretrained(args.model_name_or_path,use_fast=False)
     tokenizer.pad_token = tokenizer.eos_token
     if args.is_4bit==False:
-        model = AutoModelForCausalLM.from_pretrained(args.model_name_or_path,device_map='auto',torch_dtype=torch.float16,load_in_8bit=False)
+        # model = AutoModelForCausalLM.from_pretrained(args.model_name_or_path,device_map='auto',torch_dtype=torch.float16,load_in_8bit=False)
+        model = AutoPeftModelForCausalLM.from_pretrained(
+            args.model_name_or_path,
+            device_map="auto",
+            torch_dtype=torch.float16
+            )
         model.eval()
     # else:
     #     from auto_gptq import AutoGPTQForCausalLM

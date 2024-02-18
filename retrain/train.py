@@ -10,7 +10,7 @@ from transformers import AutoTokenizer, AutoModelForCausalLM, BitsAndBytesConfig
 from trl import setup_chat_format
 
 # Hugging Face model id
-model_id = "codellama/CodeLlama-7b-Instruct-hf" # "codellama/CodeLlama-7b-hf" # or `mistralai/Mistral-7B-v0.1`
+model_id = "codellama/CodeLlama-7b-hf" # "codellama/CodeLlama-7b-hf" # or `mistralai/Mistral-7B-v0.1`
 
 # BitsAndBytesConfig int-4 config
 bnb_config = BitsAndBytesConfig(
@@ -70,7 +70,7 @@ peft_config = LoraConfig(
 from transformers import TrainingArguments
 
 args = TrainingArguments(
-    output_dir="./codeLlama-7b-Instruct-text-to-sql", # directory to save and repository id
+    output_dir="./models/codeLlama-7b-text-to-sql", # directory to save and repository id
     num_train_epochs=3,                     # number of training epochs
     per_device_train_batch_size=3,          # batch size per device during training
     gradient_accumulation_steps=2,          # number of steps before performing a backward/update pass
