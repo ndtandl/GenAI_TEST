@@ -46,3 +46,7 @@ export PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
 I add following env in the ~/.bashrc, then this issue fix.
 export PATH=/usr/local/cuda/bin:$PATH
 export LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH
+
+
+git config --global user.name "ndtandl"
+git config --global user.email "ndtandl@gmail.com"
