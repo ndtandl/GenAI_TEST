@@ -21,6 +21,8 @@ python3 chat.py --model_name_or_path codellama/CodeLlama-7b-Instruct-hf
 
 python3 chat.py --model_name_or_path codellama/CodeLlama-7b-hf
 
+python3 chat.py --model_name_or_path ./retrain/codeLlama-7b-Instruct-text-to-sql
+
 python3 llama2_for_langchain.py --model_name_or_path /mnt/f/TinyLlama/models/Llama-2-7b-chat-hf
 
 
@@ -36,7 +38,7 @@ bash <(curl -sSL https://g.bodaay.io/hfd) -m codellama/CodeLlama-7b-hf
 
 
 
-
+export PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
 
 
 

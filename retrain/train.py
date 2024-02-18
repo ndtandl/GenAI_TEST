@@ -1,7 +1,7 @@
 from datasets import load_dataset
 
 # Load jsonl data from disk
-dataset = load_dataset("json", data_files="train_dataset.json", split="train")
+dataset = load_dataset("json", data_files="retrain/train_dataset.json", split="train")
 
 # print(dataset)
 
@@ -10,7 +10,7 @@ from transformers import AutoTokenizer, AutoModelForCausalLM, BitsAndBytesConfig
 from trl import setup_chat_format
 
 # Hugging Face model id
-model_id = "codellama/CodeLlama-7b-hf" # "codellama/CodeLlama-7b-hf" # or `mistralai/Mistral-7B-v0.1`
+model_id = "codellama/CodeLlama-7b-Instruct-hf" # "codellama/CodeLlama-7b-hf" # or `mistralai/Mistral-7B-v0.1`
 
 # BitsAndBytesConfig int-4 config
 bnb_config = BitsAndBytesConfig(
@@ -70,7 +70,7 @@ peft_config = LoraConfig(
 from transformers import TrainingArguments
 
 args = TrainingArguments(
-    output_dir="./code-llama-7b-text-to-sql", # directory to save and repository id
+    output_dir="./codeLlama-7b-Instruct-text-to-sql", # directory to save and repository id
     num_train_epochs=3,                     # number of training epochs
     per_device_train_batch_size=3,          # batch size per device during training
     gradient_accumulation_steps=2,          # number of steps before performing a backward/update pass
@@ -79,8 +79,8 @@ args = TrainingArguments(
     logging_steps=10,                       # log every 10 steps
     save_strategy="epoch",                  # save checkpoint every epoch
     learning_rate=2e-4,                     # learning rate, based on QLoRA paper
-    fp16=True,                              # use bfloat16 precision -- bf16=True,   
-    # tf32=True,                              # use tf32 precision
+    bf16=True,                              # use bfloat16 precision -- bf16=True,   
+    tf32=True,                              # use tf32 precision
     max_grad_norm=0.3,                      # max gradient norm based on QLoRA paper
     warmup_ratio=0.03,                      # warmup ratio based on QLoRA paper
     lr_scheduler_type="constant",           # use constant learning rate scheduler
@@ -122,3 +122,5 @@ trainer.save_model()
 del model
 del trainer
 torch.cuda.empty_cache()
+
+
