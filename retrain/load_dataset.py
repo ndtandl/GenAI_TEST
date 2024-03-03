@@ -20,7 +20,7 @@ dataset = dataset.shuffle().select(range(12500))
 
 # Convert dataset to OAI messages
 dataset = dataset.map(create_conversation, remove_columns=dataset.features,batched=False)
-# split dataset into 10,000 training samples and 2,500 test samples
+ççç
 dataset = dataset.train_test_split(test_size=2500/12500)
 
 print(dataset["train"][345]["messages"])
