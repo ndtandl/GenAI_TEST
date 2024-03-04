@@ -20,7 +20,7 @@ cd vllm && python setup.py install
 
 ## 第二步：启动测试server
 
-下载[13B模型](https://huggingface.co/FlagAlpha/Llama2-Chinese-13b-Chat/tree/main)或者[7B模型](https://huggingface.co/FlagAlpha/Llama2-Chinese-7b-Chat)到特定目录。
+下载[13B模型](https://huggingface.co/FlagAlpha/GenAI-13b-Chat/tree/main)或者[7B模型](https://huggingface.co/FlagAlpha/GenAI-7b-Chat)到特定目录。
 
 1. 单卡推理
 

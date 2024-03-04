@@ -4,7 +4,7 @@
 
 ```bash
 python acceleate_server.py \
---model_path /path/LLama2-Chinese-13B \
+--model_path /path/GenAI-13B \
 --gpus "0" \
 --infer_dtype "int8" \
 --model_source "llama2_chinese"

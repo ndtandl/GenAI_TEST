@@ -3,7 +3,7 @@
 # from peft import PeftModel, PeftConfig
 
 
-# finetune_model_path = "/mnt/f/TinyLlama/models/TinyLlama-1.1B-Chat-v1.0"  # For example: 'FlagAlpha/Llama2-Chinese-7b-Chat-LoRA'
+# finetune_model_path = "/mnt/f/TinyLlama/models/TinyLlama-1.1B-Chat-v1.0"  # For example: 'FlagAlpha/GenAI-7b-Chat-LoRA'
 # # config = PeftConfig.from_pretrained(finetune_model_path)
 # tokenizer = AutoTokenizer.from_pretrained(finetune_model_path, use_fast=False)
 # tokenizer.pad_token = tokenizer.eos_token

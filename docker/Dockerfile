@@ -30,14 +30,14 @@ RUN apt-get update && apt-get install -y \
     && apt-get install -y git-lfs \
     && pip install --upgrade pip
 
-WORKDIR /root/Llama2-Chinese
+WORKDIR /root/GenAI
 
-RUN git clone https://github.com/FlagAlpha/Llama2.git /root/Llama2-Chinese 
+RUN git clone https://github.com/FlagAlpha/Llama2.git /root/GenAI 
 
 RUN pip install -r requirements.txt
 
-RUN  git clone https://huggingface.co/FlagAlpha/Llama2-Chinese-7b-Chat
+RUN  git clone https://huggingface.co/FlagAlpha/GenAI-7b-Chat
 
 EXPOSE 7860 
 
-ENTRYPOINT ["python", "examples/chat_gradio.py", "--model_name_or_path", "/root/Llama2-Chinese/Llama2-Chinese-7b-Chat/"]
+ENTRYPOINT ["python", "examples/chat_gradio.py", "--model_name_or_path", "/"]

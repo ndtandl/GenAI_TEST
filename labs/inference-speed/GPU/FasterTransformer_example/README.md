@@ -51,7 +51,7 @@ docker run -idt --gpus=all --net=host  --shm-size=4G --name triton_ft_backend_pu
 
 ## 二.容器内操作
 
-下面介绍一下[Llama2-Chinese-13b-Chat](https://huggingface.co/FlagAlpha/Llama2-Chinese-13b-Chat)模型的权重转换成FasterTransformer格式。 [Llama2-Chinese-7b-Chat](https://huggingface.co/FlagAlpha/Llama2-Chinese-7b-Chat/tree/main)也是类似的方式。
+下面介绍一下[GenAI-13b-Chat](https://huggingface.co/FlagAlpha/GenAI-13b-Chat)模型的权重转换成FasterTransformer格式。 [GenAI-7b-Chat](https://huggingface.co/FlagAlpha/GenAI-7b-Chat/tree/main)也是类似的方式。
 
 1. 转换权重, 权重转换成FasterTransformer格式
 
@@ -66,7 +66,7 @@ mkdir models && sudo chmod -R 777 ./*
 
 python3 ./examples/cpp/llama/huggingface_llama_convert.py \
 -saved_dir=./models/llama \
--in_file=/path/FlagAlpha/Llama2-Chinese-13b-Chat \
+-in_file=/path/FlagAlpha/GenAI-13b-Chat \
 -infer_gpu_num=1 \
 -weight_data_type=fp16 \
 -model_name=llama
@@ -118,7 +118,7 @@ triton-model-store/llama/preprocess/1/model.py
 triton-model-store/llama/postprocess/1/model.py
 
 # 检查 这个路径为tokenier对应的路径
-self.tokenizer = LlamaTokenizer.from_pretrained("/path/FlagAlpha/Llama2-Chinese-13b-Chat")
+self.tokenizer = LlamaTokenizer.from_pretrained("/path/FlagAlpha/GenAI-13b-Chat")
 ```
 
 
