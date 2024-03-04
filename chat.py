@@ -18,7 +18,7 @@ with gr.Blocks() as demo:
         re_generate = gr.Button("Re-Renerate")
         sent_bt = gr.Button("Send")
     with gr.Accordion("Parameters", open=False):
-        slider_temp = gr.Slider(minimum=0, maximum=1, label="temperature", value=0.3)
+        slider_temp = gr.Slider(minimum=0, maximum=1, label="temperature", value=0.1)
         slider_top_p = gr.Slider(minimum=0.5, maximum=1, label="top_p", value=0.95)
         slider_context_times = gr.Slider(minimum=0, maximum=5, label="context_times", value=0,step=2.0)
     def user(user_message, history):
@@ -57,13 +57,14 @@ with gr.Blocks() as demo:
 
         generate_input = {
             "input_ids":input_ids,
-            "max_new_tokens":1024,
+            "max_new_tokens":2048,
             "do_sample":True,
-            "top_k":50,
+            "top_k":10,
             "top_p":top_p,
             "temperature":temperature,
             "repetition_penalty":1.3,
             "streamer":streamer,
+            "num_return_sequences": 1,
             "eos_token_id":tokenizer.eos_token_id,
             "bos_token_id":tokenizer.bos_token_id,
             "pad_token_id":tokenizer.pad_token_id
@@ -104,12 +105,12 @@ if __name__ == "__main__":
     tokenizer = AutoTokenizer.from_pretrained(args.model_name_or_path,use_fast=False)
     tokenizer.pad_token = tokenizer.eos_token
     if args.is_4bit==False:
-        # model = AutoModelForCausalLM.from_pretrained(args.model_name_or_path,device_map='auto',torch_dtype=torch.float16,load_in_8bit=False)
-        model = AutoPeftModelForCausalLM.from_pretrained(
-            args.model_name_or_path,
-            device_map="auto",
-            torch_dtype=torch.float16
-            )
+        model = AutoModelForCausalLM.from_pretrained(args.model_name_or_path,device_map='auto',torch_dtype=torch.float16,load_in_8bit=False)
+        # model = AutoPeftModelForCausalLM.from_pretrained(
+        #     args.model_name_or_path,
+        #     device_map="auto",
+        #     torch_dtype=torch.float16
+        #     )
         model.eval()
     # else:
     #     from auto_gptq import AutoGPTQForCausalLM

@@ -50,3 +50,9 @@ export LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH
 
 git config --global user.name "ndtandl"
 git config --global user.email "ndtandl@gmail.com"
+
+
+Example:
+"""
+write code java spring boot example
+"""
